@@ -36,39 +36,36 @@ Route::get("arreglos", function(){
     $estudiantes = [ "AN" => "Ana" , "MA" => "María" , "JO" => "Jorge"];
     echo "<pre>";
     print_r($estudiantes);
-    echo "</pre>";
     $estudiantes = [ "LU" => "Luis" , "DA" => "Daniel", "SA" => "Santiago"];
-    echo "<pre>";
     print_r($estudiantes);
     echo "</pre>";
 });
 
 Route::get('paises', function () {
     $paises = [
-        "COLOMBIA" => [
-            "capital" => "Bogotá <br>",
-            "moneda" => "Peso <br>",
+        "Colombia" => [
+            "capital" => "Bogotá",
+            "moneda" => "Peso",
             "poblacion" => 50.34
         ],
-        "PERU" => [
-            "capital" => "Lima <br>",
-            "moneda" => "Sol <br>",
+        "Peru" => [
+            "capital" => "Lima",
+            "moneda" => "Sol",
             "poblacion" => 60.34
         ],
-        "PARAGUAY" => [
-            "capital" => "Asunción <br>",
-            "moneda" => "Guarani <br>",
+        "Paraguay" => [
+            "capital" => "Asunción",
+            "moneda" => "Guarani",
             "poblacion" => 70.34
         ]
 
     ];
-    foreach ($paises as $nombrepais=> $pais){
-        echo "<h1>$nombrepais</h1>";
-        echo "<pre>";
-        echo ($pais["capital"]);
-        echo ($pais["moneda"]);
-        echo ($pais["poblacion"]);
-        echo "</pre>";
 
-    }
+    //invocar la vista
+    //Llevando los datos a la vista
+    return view("paises")->with("naciones" , $paises);
+    return view("capital")->with("naciones" , $paises);
+    return view("moneda")->with("naciones" , $paises);
+    return view("poblacion")->with("naciones" , $paises);
+
 });
